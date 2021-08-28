@@ -20,14 +20,23 @@ class PassportBiz extends BaseCCMiniBiz {
 	 * 获取系统配置
 	 */
 	static async setSetup(that) {
+		
 		let setup = ccminiCacheHelper.get(CACHE_SETUP);
 		if (!setup) {
+			setup = {};
+			setup.ver = CCMINI_SETTING.PROJECT_VER;
+			setup.SETUP_IS_SUB = CCMINI_SETTING.PROJECT_IS_SUB;
+			that.setData({
+				setup
+			}); 
+
 			let opts = {
 				hint: false
 			}
 			setup = await ccminiCloudHelper.callCloudData('home/setup', {}, opts);
 			ccminiCacheHelper.set(CACHE_SETUP, setup, CCMINI_SETTING.CACHE_SETUP);
 		}
+
 		if (setup) {
 			setup.ver = CCMINI_SETTING.PROJECT_VER;
 			setup.SETUP_IS_SUB = CCMINI_SETTING.PROJECT_IS_SUB;
@@ -61,6 +70,21 @@ class PassportBiz extends BaseCCMiniBiz {
 		});
 
 		await PassportBiz.setSetup(that);
+
+		wx.getSystemInfo({
+			success: e => { 
+				let customBar = 0;
+				let capsule = wx.getMenuButtonBoundingClientRect();
+				if (capsule) { 
+					customBar = capsule.bottom + capsule.top - e.statusBarHeight;
+				} else {
+					customBar = e.statusBarHeight + 50;
+				}
+				that.setData({
+					customBar
+				});
+			}
+		})
 
 	}
 

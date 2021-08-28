@@ -1,1 +1,2 @@
-@import 'about.wxss'
+@import 'about.wxss';
+@import "../../style/client.wxss"; 

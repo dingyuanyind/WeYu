@@ -274,7 +274,7 @@
 	type = type.toLowerCase();
  
  	for (let k in CCMINI_SETTING.PROJECT_SWITCH) {
- 		if (url && url.includes(CCMINI_SETTING.PROJECT_SWITCH[k])) {
+ 		if (url && url.includes(CCMINI_SETTING.PROJECT_SWITCH[k]) && type!='relaunch') {
  			type = 'switch';
  			break;
  		}
@@ -283,13 +283,15 @@
  	if (type == 'switch' && CCMINI_SETTING.PROJECT_IS_SUB)
  		type = 'relaunch';
 
+
  	if (url && url.includes('pages')) {
  		if (url.indexOf('/') != 0) url = '/' + url;
 
- 		if (!url.includes(CCMINI_SETTING.PROJECT_MARK))
+ 		if (!url.includes('/' + CCMINI_SETTING.PROJECT_MARK))
  			url = '/' + CCMINI_SETTING.PROJECT_MARK + url;
  	}
  
+
  	if (type == 'redirect')
  		wx.redirectTo({
  			url
@@ -326,7 +328,7 @@
  	if (type == 'switch' && CCMINI_SETTING.PROJECT_IS_SUB)
  		type = 'relaunch';
 
- 	if (url && url.includes('pages')) {
+ 	if (url && url.includes('pages') && !url.includes('HOME')) {
  		if (url.indexOf('/') != 0) url = '/' + url;
 
  		if (!url.includes(CCMINI_SETTING.PROJECT_MARK))
@@ -341,6 +343,11 @@
  		wx.switchTab({
  			url
  		});
+ 	else if (type && type == 'hint')
+ 		wx.showModal({
+ 			title: '温馨提示',
+ 			content: url,
+ 		})
  	else if (type && type == 'relaunch')
  		wx.reLaunch({
  			url

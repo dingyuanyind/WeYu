@@ -22,7 +22,7 @@ Page({
 		PassportBiz.initApp();
 		await PassportBiz.initPage(this);
 
-		await this._login();
+		//await this._login();
 	},
 
 	/**
@@ -34,6 +34,7 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: async function () {
+		await this._login();
 	},
 
 	/**
@@ -60,6 +61,9 @@ Page({
 
 	//登录
 	_login: async function () {
+	 
+		PassportBiz.clearToken(); 
+
 		await PassportBiz.loginSilence(this);
 
 		// 取得token里的信息
@@ -69,7 +73,6 @@ Page({
 			let user = {};
 			user.USER_PIC = token.pic;
 			user.USER_NAME = token.name;
-			user.USER_ITEM = token.item;
 			user.USER_SEX = token.sex;
 			user.USER_STATUS = token.status;
 
@@ -81,6 +84,11 @@ Page({
 			this._getUserInfo();
 
 		} else {
+
+			this.setData({
+				user: null
+			});
+			
 			// 未登录下  获取用户账号信息 
 			let params = {
 				fields: 'USER_TYPE,USER_PIC,USER_NAME,USER_ITEM,USER_PIC,USER_NAME,USER_SEX,USER_STATUS'
@@ -93,6 +101,7 @@ Page({
 				this.setData({
 					user
 				});
+
 		}
 	},
 

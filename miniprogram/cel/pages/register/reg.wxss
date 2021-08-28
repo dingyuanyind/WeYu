@@ -1,4 +1,5 @@
 @import "../../style/skin.wxss"; 
+@import "../../style/client.wxss"; 
 page{	
 	background-color: #fff;
 }

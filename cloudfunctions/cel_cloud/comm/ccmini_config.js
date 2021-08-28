@@ -14,9 +14,10 @@
  * Date: 2021-08-02 19:20:00
  */
 module.exports = {
-	CCMINI_CLOUD_ID: 'card-', // 云服务id  
+	CCMINI_CLOUD_ID: 'card-8gdoyuexd3702a23', // 云服务id  
 
-	CCMINI_ADMIN_MOBILE: '13988888888', // 管理员手机号码
+	CCMINI_ADMIN_NAME: 'ccadmin', // 管理员账号（6-30位)
+	CCMINI_ADMIN_PWD: '123456', // 管理员密码（6-30位)
 
 	CCMINI_TEST_MODE: false,
 
@@ -26,7 +27,7 @@ module.exports = {
 
 	PROJECT_MARK: 'cel',
 	PROJECT_NAME: 'CC校庆小程序',
-	PROJECT_VER: 'CCCel-Cloud(V1.3 Build20210810)', //升级必须，请勿修改
+	PROJECT_VER: 'CCCel-Cloud(V1.3 Build20210828)', //升级必须，请勿修改
 	PROJECT_SOURCE: 'https://gitee.com/minzonetech',
 
 	CCMINI_CLIENT_CHECK_CONTENT: true,

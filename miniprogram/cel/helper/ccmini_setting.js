@@ -12,7 +12,7 @@
   	PROJECT_SWITCH: ['index_home', 'user_index', 'my_index', 'news_board', 'face_index'],
   	PROJECT_IS_SUB: false, // 分包
   	PROJECT_NAME: 'CC校庆小程序',
-  	PROJECT_VER: 'CCCel-Cli(V1.3 Build20210810)', //升级必须，请勿修改
+  	PROJECT_VER: 'CCCel-Cli(V1.3 Build20210828)', //升级必须，请勿修改
   	PROJECT_NEWS_CATE: '校庆公告,校史大事记,校庆指南,活动安排,校友捐赠,返校信息',
 
   	TEST_MODE: false,
@@ -55,6 +55,6 @@
   	NEWS_PIC_DIR: 'client/news/pic/', //公告通知图片目录 
   	NEWS_MAX_PIC: 8, //公告通知图片上限 
 
-  	CACHE_SETUP: 3600 * 1,
+  	CACHE_SETUP: 3600 * 10,
 
   }
